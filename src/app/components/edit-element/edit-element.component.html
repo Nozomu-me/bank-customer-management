@@ -1,0 +1,10 @@
+<div class="flex">
+    <span class="mr-4 flex-1" *ngIf="show">{{value}}</span>
+    <button class="flex-1 text-gray-500 hover:text-red-600 hover:font-bold" *ngIf="show" (click)="onEdit()">
+        <fa-icon class="text-gray-500" [icon]="faGear"></fa-icon>
+    </button>
+</div>
+<div class="flex">
+    <input class="flex-1 border-2" *ngIf="!show" [(ngModel)]="value" />
+    <button class="flex-1 pl-4 text-gray-500 hover:text-green-600 hover:font-bold" *ngIf="!show" (click)="onSave(value)">save</button>
+</div>

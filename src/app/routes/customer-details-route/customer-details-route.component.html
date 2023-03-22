@@ -1,0 +1,51 @@
+<div class="flex flex-col gap-4 items-center justify-center h-screen w-screen font-mono">
+    <h1 class="text-2xl font-bold">Customer Details: </h1>
+    <div class="shadow-md p-5 rounded-lg w-4/5 max-w-3xl border-2">
+
+        <div class="flex flex-col md:flex-row">
+            <span class="flex-1">First Name:</span>
+            <span class="flex-1">{{customer?.firstName}}</span>
+        </div>
+        <div class="flex flex-col md:flex-row">
+            <span class="flex-1">Last Name:</span>
+            <span class="flex-1">{{customer?.lastName}}</span>
+        </div>
+        <div class="flex flex-col md:flex-row">
+            <span class="flex-1">Email:</span>
+            <app-edit-element class="flex-1" [value]="customer?.email" (changeValue)="update({key:'email', value: $event})" ></app-edit-element>
+        </div>
+        <div class="flex flex-col md:flex-row">
+            <span class="flex-1">Gender:</span>
+            <span class="flex-1">{{customer?.gender}}</span>
+        </div>
+        <div class="flex flex-col md:flex-row">
+            <span class="flex-1">City:</span>
+            <app-edit-element class="flex-1" [value]="customer?.city" (changeValue)="update({key:'city', value: $event})" ></app-edit-element>
+        </div>
+        <div class="flex flex-col md:flex-row">
+            <span class="flex-1">Phone Number:</span>
+            <app-edit-element class="flex-1" [value]="customer?.phoneNumber" (changeValue)="update({key:'phoneNumber', value: $event})" ></app-edit-element>
+        </div>
+        <div class="flex flex-col md:flex-row">
+            <span class="flex-1">Address:</span>
+            <app-edit-element class="flex-1" [value]="customer?.address" (changeValue)="update({key:'address', value: $event})" ></app-edit-element>
+        </div>
+        <div class="flex flex-col md:flex-row">
+            <span class="flex-1">Account Type:</span>
+            <span class="flex-1">{{customer?.accountType}}</span>
+        </div>
+        <div class="flex flex-col md:flex-row">
+            <span class="flex-1">Account Number:</span>
+            <app-edit-element class="flex-1" [value]="customer?.accountNumber" (changeValue)="update({key:'accountNumber', value: $event})" ></app-edit-element>
+        </div>
+        <div class="flex flex-col md:flex-row">
+            <span class="flex-1">Deposit:</span>
+            <app-edit-element class="flex-1" [value]="customer?.deposit" (changeValue)="update({key:'deposit', value: $event})" ></app-edit-element>
+        </div>
+    </div>
+    <div class="flex gap-8">
+        <a class="p-4 bg-blue-400 hover:bg-blue-600 rounded-md text-white" [routerLink]="['/dashboard']">Go to dashboard!</a>
+        <a class="p-4 bg-green-400 hover:bg-green-600 rounded-md text-white" [routerLink]="['/create']">Create New Customer!</a>
+
+    </div>
+</div>

@@ -1,0 +1,91 @@
+<div class="flex flex-col gap-4 items-center justify-center h-screen font-mono">
+    <h2 class="text-xl font-bold">Add Customer:</h2>
+    <div class="shadow-lg border-2 p-4 rounded-lg">
+
+        <form class="flex flex-col gap-3" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="flex gap-4">
+                <div class="flex flex-col">
+                    <input class="flex-1 p-2 border-2 rounded-md" placeholder="First Name*" type="text" id="firstname" name="firstname" formControlName="firstName"/>
+                    <small class="text-red-600" *ngIf="getControl('firstName')?.hasError('required') && getControl('firstName')?.touched">First Name is required</small>
+                </div>
+                <div class="flex flex-col">
+                    <input class="flex-1 p-2 border-2 rounded-md" placeholder="Last Name*" type="text" id="lastname" name="lastname" formControlName="lastName"/>
+                    <small class="text-red-600" *ngIf="getControl('lastName')?.hasError('required') && getControl('lastName')?.touched">Last Name is required</small>
+                </div>
+            </div>
+            <div>
+                <input class="w-full p-2 border-2 rounded-md" type="email" id="email" name="email" formControlName="email" placeholder="Email*"/>
+                <small class="text-red-600" *ngIf="getControl('email')?.hasError('required') && getControl('email')?.touched">Email is required</small>
+            </div>
+            <div class="flex flex-col gap-1">
+                <p class="font-bold">Gender*:</p>
+                <div class="flex flex-row">
+                    <label class="flex-1" for="male">Male</label>
+                    <input class="flex-1" type="radio" id="male" value="Male" name="gender" formControlName="gender"/>
+                </div>
+                <div class="flex flex-row">
+                    <label class="flex-1" for="female">Female</label>
+                    <input class="flex-1" type="radio" id="female" value="Female" name="gender" formControlName="gender"/>
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <div class="flex flex-col">
+                    <input class="flex-1 p-2 border-2 rounded-md" type="text" id="address" name="address" formControlName="address" placeholder="Address*"/>
+                    <small class="text-red-600"
+                        *ngIf="getControl('address')?.hasError('required') && getControl('address')?.touched">Address is required</small>
+                </div>
+                <div class="flex flex-col">
+                    <input class="flex-1 p-2 border-2 rounded-md"  type="text" id="city" name="city" formControlName="city" placeholder="City*"/>
+                    <small class="text-red-600"
+                        *ngIf="getControl('city')?.hasError('required') && getControl('city')?.touched">City is required</small>
+                </div>
+            
+            </div>
+            <div class="flex flex-col">
+                <input class="w-full p-2 border-2 rounded-md" type="text" id="phoneNumber" name="phoneNumber" formControlName="phoneNumber" placeholder="Phone Number*"/>
+                <small class="text-red-600" *ngIf="getControl('phoneNumber')?.hasError('required') && getControl('phoneNumber')?.touched">Phone Number is
+                    required</small>
+            </div>
+            <div class="flex flex-col gap-1">
+                <p class="font-bold">Account Type*:</p>
+                <div class="flex flex-row">
+                    <label class="flex-1" class="flex-1" for="savings">Savings</label>
+                    <input class="flex-1" class="flex-1" type="radio" id="savings" name="accountType" value="Savings" formControlName="accountType"/>
+                </div>
+
+                <div class="flex flex-row">
+                    <label class="flex-1" for="checking">Checking</label>
+                    <input class="flex-1" type="radio" id="checking" name="accountType" value="Checking" formControlName="accountType"/>
+                </div>
+                <div class="flex flex-row">
+                    <label class="flex-1" for="moneyMarketAccount">Money Market Account</label>
+                    <input class="flex-1" type="radio" id="moneyMarketAccount" name="accountType" value="Money Market Account" formControlName="accountType"/>
+                </div>
+                <div class="flex flex-row">
+                    <label class="flex-1" for="certificateOfDeposit">Certificate Of Deposit</label>
+                    <input class="flex-1" type="radio" id="certificateOfDeposit" name="accountType" value="Certificate Of Deposit" formControlName="accountType"/>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <div class="flex flex-col">
+                    <label for="accountNumber">Account Number*:</label>
+                    <input class=" p-2 border-2 rounded-md"  type="number" id="accountNumber" name="accountNumber" formControlName="accountNumber"/>
+                    <small class="text-red-600"
+                        *ngIf="getControl('accountNumber')?.hasError('required') && getControl('accountNumber')?.touched">Account Number is
+                        required</small>
+                </div>
+                <div class="flex flex-col">
+                    <label for="deposit">Deposit:</label>
+                    <input class="p-2 border-2 rounded-md" type="number" id="deposit" name="deposit" formControlName="deposit"/>
+                </div>
+            </div>
+            <div class="flex gap-2">
+                <input  class="text-white rounded-md p-2 flex-1 bg-blue-500" type="submit">
+                <input class="text-white rounded-md flex-1 bg-red-500" type="reset">
+            </div>
+        </form>
+    </div>
+    <a [routerLink]="['/dashboard']">
+        <fa-icon class="text-3xl text-blue-600 fixed top-10  right-10 hover:text-4xl" [icon]="faBars"></fa-icon>
+    </a>
+</div>

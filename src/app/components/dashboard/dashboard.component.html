@@ -1,0 +1,13 @@
+<div class="w-full flex flex-col md:flex-row md:items-stretch items-center gap-3">
+    <div class="w-full flex-1 shadow p-4">
+        <h2 class="text-xl pb-4">Total number of customers:</h2>
+        <h1 class="text-3xl font-bold">{{totalCustomersNumber}}</h1>
+    </div>
+    <div class="w-full flex-1 shadow p-4">
+        <h2 class="text-xl pb-4">Total amount of money:</h2>
+        <h1 class="text-3xl font-bold">{{totalDeposit}} $</h1>
+    </div>
+    <div class="w-full flex-1 shadow p-2 self-center">
+        <apx-chart class="!w-48 !h-48" [series]="[chart.checking, chart.savings,chart.moneyMarket,chart.certificate]" [chart]="chartDetails" [labels]="chartLabels"></apx-chart>
+    </div>
+</div>
