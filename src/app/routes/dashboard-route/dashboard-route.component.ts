@@ -1,6 +1,7 @@
 import { Customer } from './../../models/costumer.model';
 import { CustomerService } from './../../customer.service';
 import { Component, OnInit } from '@angular/core';
+import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard-route',
@@ -10,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardRouteComponent implements OnInit {
   constructor(private customerService: CustomerService) {}
 
+  sub = new Subject();
   customers: Customer[] | undefined;
   totalCustomersNumber: number = 0;
   totalDeposit: number = 0;
@@ -33,15 +35,20 @@ export class DashboardRouteComponent implements OnInit {
           this.chart.certificate += 1;
       }
       this.totalCustomersNumber = customers.length;
+      this.sub
+        .pipe(debounceTime(1000), distinctUntilChanged())
+        .subscribe((search) => {
+          this.customerService
+            .searchCustomers(search as string)
+            .subscribe((customers: Customer[]) => {
+              this.customers = [...customers];
+            });
+        });
     });
   }
 
   search(event: any): void {
-    this.customerService
-      .serachCustomers(event.target.value)
-      .subscribe((customers: Customer[]) => {
-        this.customers = [...customers];
-      });
+    this.sub.next(event.target.value);
   }
   Delete(customer: Customer) {
     this.customerService.deleteCustomer(customer).subscribe(() => {

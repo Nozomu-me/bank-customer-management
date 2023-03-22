@@ -1,6 +1,5 @@
 {
   "customers": [
-    
     {
       "id": "6ac848d6-05bf-4e69-ad67-86534107247c",
       "firstName": "Lance",
@@ -200,7 +199,8 @@
       "phoneNumber": "028798623",
       "accountType": "Money Market Account",
       "accountNumber": 87987689869,
-      "deposit": 21312
+      "deposit": 21312,
+      "city": "casablanca"
     },
     {
       "id": "1a10257c-9ea4-42b6-adec-1700abf84458",

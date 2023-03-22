@@ -14,7 +14,7 @@ export class CustomerService {
   getCustomers(): Observable<Customer[]> {
     return this.http.get<Customer[]>(API_URL);
   }
-  serachCustomers(search: string): Observable<Customer[]> {
+  searchCustomers(search: string): Observable<Customer[]> {
     return this.http.get<Customer[]>(`${API_URL}/?q=${search}`);
   }
   getCustomerById(id: string): Observable<Customer> {
